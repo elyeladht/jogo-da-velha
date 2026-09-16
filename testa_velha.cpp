@@ -1,40 +1,43 @@
+// Copyright 2026 Your Name
 
 /**
  * \file testa_velha.cpp
  */
 
+#include "catch.hpp"
 #include "velha.hpp"
 
 #define CATCH_CONFIG_MAIN
 #define CATCH_CONFIG_NO_POSIX_SIGNALS
-#include "catch.hpp"
-  
 
+TEST_CASE("Testa coluna", "[single-file]") {
+  int teste1[3][3] = {
+    { 2, 0, 1 },
+    { 2, 0, 1 },
+    { 0, 2, 1 }
+  };
+  REQUIRE(VerificaVelha(teste1) == 1);
 
-TEST_CASE( "Testa coluna", "[single-file]" ) {
-	int teste1[3][3]= {   { 2, 0, 1 }, 
-	                      { 2, 0, 1 },
-						  { 0, 2, 1 }
-					  };
-    REQUIRE( VerificaVelha(teste1) == 1 );
+  int teste2[3][3] = {
+    { 2, 1, 1 },
+    { 2, 0, 2 },
+    { 2, 1, 1 }
+  };
+  REQUIRE(VerificaVelha(teste2) == 2);
+}
 
-    int teste2[3][3]= {   { 2, 1, 1 }, 
-	                      { 2, 0, 2 },
-						  { 2, 1, 1 }
-					  };
-    REQUIRE( VerificaVelha(teste2) == 2 );
-} 
- 
-TEST_CASE( "Testa linha", "[single-file]" ) {
-	int teste3[3][3]= {   { 2, 2, 2 }, 
-	                      { 2, 0, 1 },
-						  { 1, 1, 0 }
-					  };
-    REQUIRE( VerificaVelha(teste3) == 2 );
+TEST_CASE("Testa linha", "[single-file]") {
+  int teste3[3][3] = {
+    { 2, 2, 2 },
+    { 2, 0, 1 },
+    { 1, 1, 0 }
+  };
+  REQUIRE(VerificaVelha(teste3) == 2);
 
-    int teste4[3][3]= {   { 2, 1, 0 }, 
-	                      { 2, 0, 2 },
-						  { 1, 1, 1 }
-					  };
-    REQUIRE( VerificaVelha(teste4) == 1 );
-} 
+  int teste4[3][3] = {
+    { 2, 1, 0 },
+    { 2, 0, 2 },
+    { 1, 1, 1 }
+  };
+  REQUIRE(VerificaVelha(teste4) == 1);
+}

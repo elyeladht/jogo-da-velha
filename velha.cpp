@@ -40,10 +40,10 @@ int VerificaVelha(int velha[3][3]) {
 
   // 4. Se ninguém ganhou (resultadoGanhador == 0)
   if (espaco > 0) {
-    return -1; // Jogo em andamento
+    return -1;  // Jogo em andamento
   }
 
-  return 0; // Empate (velha) - tabuleiro cheio e sem vencedor
+  return 0;  // Empate (velha) - tabuleiro cheio e sem vencedor
 }
 
 int GanhadorVelha(int velha[3][3]) {
@@ -99,6 +99,6 @@ int GanhadorVelha(int velha[3][3]) {
   } else if (oGanhou > xGanhou) {
     return 2;
   } else {
-    return 0; // Nenhum vencedor ainda
+    return 0;  // Nenhum vencedor ainda
   }
 }

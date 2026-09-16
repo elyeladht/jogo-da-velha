@@ -3,6 +3,7 @@
  */
 
 #include "velha.hpp"
+#include <cmath>
 
 /** 
  * @brief verifica situacao do jogo da velha  

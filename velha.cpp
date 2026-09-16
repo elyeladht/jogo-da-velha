@@ -19,6 +19,6 @@ int VerificaVelha(int velha[3][3]) {
       return velha[0][j];  // Corresponde ao ganhador
     }
   }
-
+  
   return 0;  // Nenhum vencedor encontrado ainda
 }

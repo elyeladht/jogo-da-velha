@@ -14,6 +14,25 @@
  */ 
 
 int VerificaVelha(int velha[3][3]) {
+  // Verificando jogo inválido
+  int o = 0, x = 0;
+  for (int i = 0; i < 3; ++i)
+  {
+    for (int j = 0; j < 3; ++j)
+    {
+      if(velha[i][j] == 1) {
+        x++;
+      }
+      else if(velha[i][j] == 2) {
+        o++;
+      }
+    }
+  }
+
+  if (abs(x - o) > 1) {
+    return -2;
+  }
+
   // Verificador de colunas
   for (int j = 0; j < 3; j++) {
     if (velha[0][j] == velha[1][j] && velha[1][j] == velha[2][j] && velha[0][j] != 0) {

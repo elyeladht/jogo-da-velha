@@ -97,7 +97,7 @@ TEST_CASE("Testa andamento", "[single-file]") {
   REQUIRE(VerificaVelha(teste2) == -1);
 }
 
-/*
+
 TEST_CASE("Testa empate", "[single-file]") {
   int teste1[3][3] = {
     { 2, 1, 1 },
@@ -113,4 +113,4 @@ TEST_CASE("Testa empate", "[single-file]") {
   };
   REQUIRE(VerificaVelha(teste2) == 0);
 }
-*/
+

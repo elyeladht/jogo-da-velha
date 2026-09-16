@@ -1,0 +1,105 @@
+        -:    0:Source:velha.cpp
+        -:    1:/**
+        -:    2: * \file  velha.cpp
+        -:    3: */
+        -:    4:
+        -:    5:#include "velha.hpp"
+        -:    6:#include <cmath>
+        -:    7:
+        -:    8:// Protótipo da Função auxiliar
+        -:    9:int GanhadorVelha(int const velha[3][3]);
+        -:   10:
+        -:   11:// Função principal de verificação
+       13:   12:int VerificaVelha(int const velha[3][3]) {
+       13:   13:  int o = 0, x = 0, espaco = 0;
+        -:   14:
+        -:   15:  // 1. Contagem de elementos no tabuleiro
+       52:   16:  for (int i = 0; i < 3; ++i) {
+      156:   17:    for (int j = 0; j < 3; ++j) {
+      117:   18:      if (velha[i][j] == 1) {
+       53:   19:        x++;
+       64:   20:      } else if (velha[i][j] == 2) {
+       44:   21:        o++;
+        -:   22:      } else {
+       20:   23:        espaco++;
+        -:   24:      }
+        -:   25:    }
+        -:   26:  }
+        -:   27:
+        -:   28:  // 2. Validação por quantidade de peças (Jogo Inválido)
+       13:   29:  if (std::abs(x - o) > 1) {
+        3:   30:    return -2;
+        -:   31:  }
+        -:   32:
+        -:   33:  // 3. Determina o status do tabuleiro (1, 2, -2 ou 0)
+       10:   34:  int resultadoGanhador = GanhadorVelha(velha);
+        -:   35:
+        -:   36:  // Se houve um vencedor (1 ou 2) ou se deu jogo inválido por duplo vencedor (-2)
+       10:   37:  if (resultadoGanhador != 0) {
+        6:   38:    return resultadoGanhador;
+        -:   39:  }
+        -:   40:
+        -:   41:  // 4. Se ninguém ganhou (resultadoGanhador == 0)
+        4:   42:  if (espaco > 0) {
+        2:   43:    return -1;  // Jogo em andamento
+        -:   44:  }
+        -:   45:
+        2:   46:  return 0;  // Empate (velha) - tabuleiro cheio e sem vencedor
+        -:   47:}
+        -:   48:
+       10:   49:int GanhadorVelha(int const velha[3][3]) {
+       10:   50:  int xGanhou = 0, oGanhou = 0;
+        -:   51:
+        -:   52:  // Verificador de colunas
+       40:   53:  for (int j = 0; j < 3; j++) {
+       30:   54:    if (velha[0][j] == velha[1][j] && velha[1][j] == velha[2][j] && velha[0][j] != 0) {
+        2:   55:      if (velha[0][j] == 1) {
+        1:   56:        xGanhou++;
+        1:   57:      } else if (velha[0][j] == 2) {
+        1:   58:        oGanhou++;
+        -:   59:      }
+        -:   60:    }
+        -:   61:  }
+        -:   62:
+        -:   63:  // Verificador de linhas
+       40:   64:  for (int i = 0; i < 3; i++) {
+       30:   65:    if (velha[i][0] == velha[i][1] && velha[i][1] == velha[i][2] && velha[i][0] != 0) {
+        2:   66:      if (velha[i][0] == 1) {
+        1:   67:        xGanhou++;
+        1:   68:      } else if (velha[i][0] == 2) {
+        1:   69:        oGanhou++;
+        -:   70:      }
+        -:   71:    }
+        -:   72:  }
+        -:   73:
+        -:   74:  // Diagonal principal
+       10:   75:  if (velha[0][0] == velha[1][1] && velha[1][1] == velha[2][2] && velha[1][1] != 0) {
+        1:   76:    if (velha[0][0] == 1) {
+    #####:   77:      xGanhou++;
+        1:   78:    } else if (velha[0][0] == 2) {
+        1:   79:      oGanhou++;
+        -:   80:    }
+        -:   81:  }
+        -:   82:
+        -:   83:  // Diagonal secundaria
+       10:   84:  if (velha[0][2] == velha[1][1] && velha[1][1] == velha[2][0] && velha[1][1] != 0) {
+        1:   85:    if (velha[0][2] == 1) {
+        1:   86:      xGanhou++;
+    #####:   87:    } else if (velha[0][2] == 2) {
+    #####:   88:      oGanhou++;
+        -:   89:    }
+        -:   90:  }
+        -:   91:
+        -:   92:  // Se ambos ganharam ao mesmo tempo, é jogo inválido
+       10:   93:  if (xGanhou > 0 && oGanhou > 0) {
+    #####:   94:    return -2;
+        -:   95:  }
+        -:   96:
+       10:   97:  if (xGanhou > oGanhou) {
+        3:   98:    return 1;
+        7:   99:  } else if (oGanhou > xGanhou) {
+        3:  100:    return 2;
+        -:  101:  } else {
+        4:  102:    return 0;  // Nenhum vencedor ainda
+        -:  103:  }
+        -:  104:}

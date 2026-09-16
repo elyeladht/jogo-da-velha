@@ -6,10 +6,10 @@
 #include <cmath>
 
 // Protótipo da Função auxiliar
-int GanhadorVelha(int velha[3][3]);
+int GanhadorVelha(int const velha[3][3]);
 
 // Função principal de verificação
-int VerificaVelha(int velha[3][3]) {
+int VerificaVelha(int const velha[3][3]) {
   int o = 0, x = 0, espaco = 0;
 
   // 1. Contagem de elementos no tabuleiro
@@ -46,7 +46,7 @@ int VerificaVelha(int velha[3][3]) {
   return 0;  // Empate (velha) - tabuleiro cheio e sem vencedor
 }
 
-int GanhadorVelha(int velha[3][3]) {
+int GanhadorVelha(int const velha[3][3]) {
   int xGanhou = 0, oGanhou = 0;
 
   // Verificador de colunas

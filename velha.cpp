@@ -19,6 +19,13 @@ int VerificaVelha(int velha[3][3]) {
       return velha[0][j];  // Corresponde ao ganhador
     }
   }
-  
+
+  // Verificador de linhas
+  for (int i = 0; i < 3; i++) {
+    if (velha[i][0] == velha[i][1] && velha[i][1] == velha[i][2] && velha[i][0] != 0) {
+      return velha[i][0];  // Corresponde ao ganhador
+    }
+  }
+
   return 0;  // Nenhum vencedor encontrado ainda
 }
